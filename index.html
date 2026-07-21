@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+    
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ========== Navbar ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: black;
+      padding: 10px 30px;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .log h1 {
+      font-size: 28px;
+      color: white;
+    }
+
+    .log h1 span {
+      color: orangered;
+      border-bottom: 3px solid orangered;
+      transition: 0.4s;
+    }
+
+    .log h1 span:hover {
+      border-bottom: 3px solid white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: orange;
+    }
+
+    #icon {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* ========== Home Section ========== */
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 60px 5%;
+      gap: 40px;
+      color: white;
+    }
+
+    .home .box1 {
+      max-width: 500px;
+    }
+
+    .home img {
+      width: 350px;
+      border-radius: 50%;
+    }
+
+    .home button {
+      width: 120px;
+      border: none;
+      height: 40px;
+      color: white;
+      border-radius: 6px;
+      margin-right: 10px;
+      transition: 0.3s;
+    }
+
+    .right {
+      background-color: dodgerblue;
+    }
+
+    .left {
+      background-color: orange;
+    }
+
+    .right:hover {
+      background-color: orange;
+    }
+
+    .left:hover {
+      background-color: dodgerblue;
+    }
+
+    .icon i {
+      font-size: 25px;
+      margin-right: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .icon i:hover {
+      color: orange;
+      transform: scale(1.2);
+    }
+
+    /* ========== Project Section ========== */
+    .project {
+      text-align: center;
+      padding: 60px 5%;
+      color: black;
+      color: white;
+    }
+
+    .project p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: black;
+    }
+
+    .card {
+      transition: 0.4s;
+      
+    }
+    
+
+    .card:hover {
+      box-shadow: 0px 5px 15px rgba(0, 0, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    /* ========== Services Section ========== */
+    .servicess {
+      text-align: center;
+      padding: 60px 5%;
+      background: #090040;
+      
+    }
+
+    .cards {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+      
+    }
+
+    .cards:hover {
+      background-color: #222;
+      transform: translateY(-5px);
+    }
+
+    /* ========== About Section ========== */
+    .about {
+      text-align: center;
+      padding: 60px 5%;
+      color: white;
+    }
+
+    .parent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 0 5%;
+    }
+
+    .parent img {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .div2 {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .about-btn {
+      background-color: dodgerblue;
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .about-btn:hover {
+      background-color: orangered;
+    }
+
+    /* ========== Contact Section ========== */
+    .contact {
+      text-align: center;
+      padding: 60px 5%;
+      color: white;
+    }
+
+    .contact p {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+     .container {
+      text-align: center;
+      padding-top: 50px;
+    }
+   
+    .contact-form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .contact-form button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .contact-form button:hover {
+      background-color: #0056b3;
+    }
+    @media (max-width: 920px) {
+      #icon {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: black;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .home {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .home img {
+        width: 250px;
+      }
+
+      .div2 {
+        text-align: center;
+      }
+    }
+       /* ========== footr Section ========== */
+
+    .footer{
+      text-align: center;
+    }
+    .parent0{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 100px;
+      padding: 10px 30px;
+      flex-wrap: wrap;
+      font-family: inherit;
+      background-color: rgb(0, 195, 255);
+      color: white;
+
+    }
+   ul{
+    display: flex;
+    gap: 30px;
+    font-size: 20px;
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+      color: white;
+   }
+   ul li{
+    list-style: none;
+   }
+   ul li a{
+    text-decoration: none;
+    color: white;
+   }
+   body{
+    background-color:#090040;
+   }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="log">
+      <h1>Port<span>Folio</span></h1>
+    </div>
+
+    <ul class="nav-links" id="navlink">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#servicess">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div id="icon">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <section class="home" id="home">
+    <div class="box1" data-aos="fade-right">
+      <h3>HI! I AM</h3>
+      <h1 id="element">WEB DEVELOPER</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum modi at ad aliquid architecto omnis odit nesciunt doloremque fuga!</p>
+      <div class="icon mt-3">
+        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-solid fa-phone"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+      </div>
+      <div class="mt-3">
+        <button class="right">Hire Me</button>
+        <button class="left">Projects</button>
+      </div>
+    </div>
+
+    <div class="box2" data-aos="zoom-out-up">
+        
+      <img src="images/homeimg.jpg.webp" alt="Profile Image">
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="project" id="projects">
+    <h2>My Projects</h2>
+    <p style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex minus laudantium eius exercitationem?</p>
+
+     <div class="container">
+      <div class="row justify-content-center gap-5 container">
+        <div class="card coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem; color: black; "  data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="https://husnain319.github.io/Picnic-game/"  id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card  coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#"  id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+    <div class="card coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#"  id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#"  id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#"  id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+    <div class="card coll-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"data-aos="zoom-out-up">
+    <img src="images/project.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" id="btn" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+        
+      </div>
+      
+    </div>
+   
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="servicess" id="servicess">
+    <h2 style="color: white;">My Services</h2>
+    <p style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate pariatur iste atque!</p>
+
+    <div class="row justify-content-center g-4 mt-4 gap-5">
+      <div class="col-md-3 cards" data-aos="zoom-out-up">
+        <i class="fa-solid fa-code fa-2x mb-3"></i>
+        <h5>Frontend Developer</h5>
+        <p>Building responsive and interactive user interfaces.</p>
+      </div>
+      <div class="col-md-3 cards" data-aos="zoom-out-up">
+        <i class="fa-solid fa-database fa-2x mb-3"></i>
+        <h5>Backend Developer</h5>
+        <p>Creating secure and scalable server-side solutions.</p>
+      </div>
+      <div class="col-md-3 cards "data-aos="zoom-out-up">
+        <i class="fa-solid fa-mobile-screen fa-2x mb-3"></i>
+        <h5>App Developer</h5>
+        <p>Building mobile-friendly and fast-performing apps.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    <div class="parent">
+        
+      <img src="images/about us .jpg.jpg" alt="">
+      <div class="div2">
+        <h3>Who am I?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta nostrum dolores, optio cum eveniet laborum natus voluptatibus ab explicabo accusamus vero numquam omnis quasi odit, nobis accusantium error quisquam.</p>
+        <button class="about-btn mt-3">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptates impedit ratione asperiores!</p>
+    <div class="container">
+
+    <div class="contact-form" >
+      <form action=""  id="myform">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" >
+          <p id="msg-error"></p>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" >
+            <p id="email-error"></p>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" id="message" placeholder="Your Message" name="message" rows="4" ></textarea>
+            <p id="textarea-error"></p>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+
+    
+  </section>
+
+
+<!-- footer-->
+
+<section class="footer">
+    
+  <footer class="parent0">
+    <div class="div">
+      <h3>Husnain2410e@aptechgdn.net</h>
+    </div>
+    
+
+      <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+  </footer>
+    
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    new Typed('#element', {
+      strings: ['Web Developer', 'Frontend Designer', 'Freelancer'],
+      typeSpeed: 50,
+      loop: true
+    });
+       let icon =document.querySelector('#icon').addEventListener('click', () => {
+     let navlink=  document.querySelector('#navlink').classList.toggle('show');
+    });
+     
+    // contact us
+   let msgerror = document.getElementById('msg-error');
+let emailerror = document.getElementById('email-error');
+let textareaerror = document.getElementById('textarea-error');
+let myform = document.getElementById('myform');
+
+myform.addEventListener("submit", function() {
+  
+
+  let isvalue = true;
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let message = document.getElementById('message').value.trim();
+
+  msgerror.innerHTML = "";
+  emailerror.innerHTML = "";
+  textareaerror.innerHTML = "";
+
+  if (name === "") {
+    msgerror.innerHTML = "Name must be required";
+    msgerror.style.color = "red";
+    isvalue = false;
+  }
+
+  if (email === "") {
+    emailerror.innerHTML = "Email must be required";
+    emailerror.style.color = "red";
+    isvalue = false;
+  }
+
+ else if (message === "") {
+    textareaerror.innerHTML = "Message must be required";
+    textareaerror.style.color = "red";
+    isvalue = false;
+  }
+
+  if (isvalue) {
+    alert("Form submitted successfully!");
+  
+  }
+});
+
+
+
+
+  </script>
+</body>
+</html>
